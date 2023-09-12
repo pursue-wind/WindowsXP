@@ -4,7 +4,7 @@
   border: 1px solid #333;
   background-color: #000;
   padding: 4px;
-  color: #fff;
+  color: #0e57af;
   float: left;
   width: 250px;
   margin-bottom: 7px;
@@ -20,9 +20,7 @@
 }
 
 body {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 134, 255, 1) 100%);
-  color: #fff;
+  background: #000;
   line-height: 1.5;
   padding: 10px;
   font-family: sans-serif;
@@ -159,7 +157,7 @@ h4 {
 .xterm .composition-view {
   /* TODO: Composition position got messed up somewhere */
   background: #000;
-  color: #FFF;
+  color: #0e57af;
   display: none;
   position: absolute;
   white-space: nowrap;
@@ -249,15 +247,82 @@ h4 {
 .xterm-underline {
   text-decoration: underline;
 }
-
+#boot_options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 #start_winxp {
-  width: 100%;
-  height: 60px;
-  font-family: 'Segoe UI', default;
   font-size: 40px;
-  transition: 0.5s all;
+  background: #000;
+  width: 50%;
 }
 
-#start_winxp:hover {
-  transform: rotate(-5deg) scale(1.1);
+#start_winxp, #start_winxp::before, #start_winxp::after {
+  box-sizing: border-box;
+
+}
+
+
+
+.btn {
+  position: relative;
+  z-index: 0;
+  line-height: 80px;
+  color: #8eb7f6;
+  font-size: 24px;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .3s;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, .4));
+}
+
+.btn:hover {
+  color: #0e57af;
+  box-shadow: 0 0 5px #0e57af,
+  0 0 25px #0e57af;
+}
+
+.btn:hover::after,
+.btn:hover::before {
+  transition: .3s;
+  background: #0e57af;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 300%;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-position: 0 0;
+  background-image: conic-gradient(#0e57af, #0e57af);
+  animation: rotate 2s linear infinite;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 2px;
+  top: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background: #000;
+  border-radius: 10px;
+}
+@keyframes rotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
 }
